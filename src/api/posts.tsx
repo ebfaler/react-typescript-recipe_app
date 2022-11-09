@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-//base url for recipe api
+//base url for api
 export default axios.create({
-    baseURL: 'www.themealdb.com/'
+    baseURL: 'http://localhost:3500'
 });

@@ -3,61 +3,38 @@ import './index.css';
 import Header from './Header';
 import Search from './Search';
 import Feed from './Feed';
-import { useEffect, useState } from 'react';
-import React from 'react';
-// import api from './api/posts';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import AppProps from './AppProps';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 
 function App() {
-
 
   //setting type to a string and an inital value of empty
   const [search, setSearch] = useState<string>('');
 
   //setting the inital state of the feed
-  const [feed, setFeed] = useState<string>('');
+  //setting useState to an array of type AppProps 
+  const [feed, setFeed] = useState<AppProps[] | undefined>();
 
   //if we wanted to accept multiple types of string we could use union eg 
   // const [searchNew, setSearchNew] = useState<string | number >('');
 
-  //AXIOS
+  //USING AXIOS TO GET DATA
+  useEffect(
+    () => {
 
-
-
-  //USING FETCH API with my own local REST API found in data/recipes.json
-  // const API_URL = 'http://localhost:3500/items';
-
-  // useEffect(() => {
-
-  //   const fetchItems = async () => {
-  //     try {
-  //       const response = await fetch(API_URL);
-  //       const listItems = await response.json;
-  //       console.log(listItems)
-  //       setFeed(listItems);
-  //     }
-  //     catch (err) {
-  //       console.log('error');
-
-  //     }
-  //   }
-  //   setTimeout(() => fetchItems(), 2000);
-
-  // }, []);
-
-
-  // USING AXIOS TO GET DATA
-
-  //axios request, intitialised on page load
-  // useEffect(() => {
-  //   const url = 'www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata';
-  //   axios.get(url).then((response) => {
-  //     console.log(response.data);
-  //   });
-  // }, []);
-
-
+      // Use [] as second argument in useEffect for not rendering each time
+      axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=8`)
+        .then((response) => {
+          console.log(response.data.recipes);
+          setFeed(response.data.recipes);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
 
 
   return (
@@ -69,7 +46,8 @@ function App() {
       />
       <Feed
         feed={feed}
-        setFeed={setFeed} />
+      // setFeed={setFeed} 
+      />
     </div>
   );
 }
