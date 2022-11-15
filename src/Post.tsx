@@ -10,19 +10,13 @@ const Post: React.FC<{ post: AppProps | undefined }> = ({ post }) => {
     }
 
     return (
-        <div className="post">
+        <div className="posts">
+            <Link to={`/post/${post.id}`}>
 
-            <h2>{post.title}</h2>
+                <h2>{post.title}</h2>
+                <img src={post.image} alt="image of food" />
+            </Link>
 
-            {/* <Link to > */}
-            <img src={post.image} alt="image of food" />
-            {/* if the post is more than 25 characters, only show the first 25 characters and an ellipsis(...) */}
-            {/* </Link> */}
-            {/* <p className="postBody">{
-                (post.summary).length <= 100
-                    ? post.summary
-                    : `${(post.summary).slice(0, 100)}...`
-            }</p> */}
         </div>
     )
 }

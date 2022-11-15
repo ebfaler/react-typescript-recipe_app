@@ -9,15 +9,15 @@ import Post from './Post';
 // }
 
 
-//  setting the type of feed
-const Feed: React.FC<{ feed: AppProps[] | undefined }> = ({ feed }) => {
-    if (!feed) {
-        return <div>empty</div>
+//   setting the type of posts to an 'AppProps' array
+const Feed: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
+    if (!posts) {
+        return <div>Sorry, can't find posts</div>
     }
     return (
         <>
             <h1>Our Popular Picks</h1>
-            {feed.map(post => (
+            {posts.map(post => (
                 <Post key={post.id} post={post} />
             ))}
         </>

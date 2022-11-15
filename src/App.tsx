@@ -1,7 +1,9 @@
 
 import './index.css';
 import Header from './Header';
+import Footer from './Footer';
 import Search from './Search';
+import PostPage from './PostPage';
 import Feed from './Feed';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -16,7 +18,7 @@ function App() {
 
   //setting the inital state of the feed
   //setting useState to an array of type AppProps 
-  const [feed, setFeed] = useState<AppProps[] | undefined>();
+  const [posts, setPosts] = useState<AppProps[] | undefined>();
 
   //if we wanted to accept multiple types of string we could use union eg 
   // const [searchNew, setSearchNew] = useState<string | number >('');
@@ -29,7 +31,7 @@ function App() {
       axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=8`)
         .then((response) => {
           console.log(response.data.recipes);
-          setFeed(response.data.recipes);
+          setPosts(response.data.recipes);
         })
         .catch((error) => {
           console.log(error);
@@ -44,10 +46,13 @@ function App() {
         search={search}
         setSearch={setSearch}
       />
-      <Feed
-        feed={feed}
-      // setFeed={setFeed} 
-      />
+
+      <Routes>
+        <Route path="/" element={<Feed posts={posts} />} />
+        <Route path="/post/:id" element={<PostPage posts={posts} />} />
+      </Routes>
+
+      <Footer />
     </div>
   );
 }
