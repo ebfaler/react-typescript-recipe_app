@@ -14,9 +14,12 @@ const Feed: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
     if (!posts) {
         return <div>Sorry, can't find posts</div>
     }
+
+    console.log("posts:" + posts);
     return (
         <>
             <h1>Our Popular Picks</h1>
+
             {posts.map(post => (
                 <Post key={post.id} post={post} />
             ))}

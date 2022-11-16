@@ -27,6 +27,10 @@ const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
         return <h2>Post not found!</h2>
     }
 
+    // const split = post.instructions.split(',');
+    // console.log("split:" + split);
+
+
 
     return (
 
