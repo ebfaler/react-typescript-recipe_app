@@ -1,6 +1,7 @@
 import React from 'react';
 import AppProps from './AppProps';
 import Post from './Post';
+
 // interface Props {
 //     feed: string;
 //     //I hovered over setSearch in App.js to find the type
@@ -18,7 +19,7 @@ const Feed: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
     console.log("posts:" + posts);
     return (
         <>
-            <h1>Our Popular Picks</h1>
+            <h1 className='feed-header'>Our Popular Picks</h1>
 
             {posts.map(post => (
                 <Post key={post.id} post={post} />

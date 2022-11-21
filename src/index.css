@@ -1,13 +1,89 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+ html {
+   font-size: 22px;
+ }
+
+
+ body {
+   margin: 0;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+     sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   padding: 20px;
+ }
+
+ code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+     monospace;
+ }
+
+ /* Header */
+
+ .App-header {
+
+   flex-direction: column;
+   flex-wrap: nowrap;
+   text-align: center;
+
+
+
+ }
+
+ .header-title {
+   font-family: 'Square Peg', cursive;
+   font-weight: bolder;
+   font-size: 70px;
+ }
+
+ .header-des {
+
+   font-family: 'Hind Siliguri', sans-serif;
+   font-size: 15px;
+ }
+
+ /* Feed */
+
+
+ .searchForm {
+   text-align: center;
+   margin-bottom: 25px;
+ }
+
+ .feed-header {
+   font-family: 'Hind Siliguri', sans-serif;
+   font-size: 27px;
+   text-align: center;
+   margin-bottom: 25px;
+ }
+
+ .posts {
+   margin-bottom: 20px;
+   display: flexbox;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   text-align: center;
+
+ }
+
+ .posts a {
+   text-decoration: none;
+   font-family: 'Hind Siliguri', sans-serif;
+   font-size: 15px;
+   font-weight: medium;
+   color: black;
+ }
+
+ .posts img {
+   height: auto;
+   width: 15rem;
+   text-align: center;
+   padding: 10 px;
+
+ }

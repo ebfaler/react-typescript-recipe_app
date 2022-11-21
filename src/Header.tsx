@@ -6,9 +6,9 @@ const Header = () => {
 
         <div className="Header">
             <header className="App-header">
-                <h1>PANTRY APP</h1>
-                <h2> Wondering what to eat today? We have some ideas</h2>
+                <h1 className='header-title'>Pantry App</h1>
                 <img src={logo} className="Header-logo" alt="logo" />
+                <h2 className='header-des'> Wondering what to eat today? We have some ideas</h2>
             </header>
         </div>
     )

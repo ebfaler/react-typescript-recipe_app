@@ -21,7 +21,7 @@ const Search = ({ search, setSearch }: Props) => {
                 role='searchBox'
                 placeholder='Search Items'
                 value={search}
-                //here we set the state with setSearch
+                //here we set the search state with setSearch
                 onChange={(e) => setSearch(e.target.value)}
             />
         </form>

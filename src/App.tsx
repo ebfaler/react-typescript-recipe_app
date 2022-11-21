@@ -5,9 +5,6 @@ import Footer from './Footer';
 import Search from './Search';
 import PostPage from './PostPage';
 import Feed from './Feed';
-import Caribbean from './Caribbean';
-import Veggie from './Veggie';
-import Mediterranean from './Mediterranean';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AppProps from './AppProps';
@@ -16,10 +13,11 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 function App() {
 
-  //setting type to a string and an inital value of empty
+  //setting the search string to an inital value of empty
   const [search, setSearch] = useState<string>('');
-
+  //setting the home feed based on user search
   const [searchResults, setSearchResults] = useState<AppProps[] | undefined>();
+
 
   //setting the inital state of the home feed
   // and setting useState to an array of type AppProps 
@@ -40,11 +38,11 @@ function App() {
   //       });
   //   }, []);
 
-  // Fetch our data
+  // Fetch our data to display all the posts at load time ([] sets useEffect at load time)
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=8`)
+        const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=24`)
         setPosts(response.data.recipes);
       } catch (err) {
         // Not in the 200 response range 
@@ -55,15 +53,15 @@ function App() {
   }, [])
 
 
-  //Set up search functionality
+  //Set up search functionality, when posts or search dependancies change
   useEffect(() => {
     if (!posts) {
       return
     }
     const filteredResults = posts.filter((post) =>
-      // ((post.instructions).toLowerCase()).includes(search.toLowerCase())||
+      //filter out any of the (lower case) post title includes any of the search terms. I set search state in Search.tsx
       ((post.title).toLowerCase()).includes(search.toLowerCase()));
-
+    //with the titles that do match, we will set them in the search results
     setSearchResults(filteredResults);
   }, [posts, search])
 
@@ -78,9 +76,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Feed posts={searchResults} />} />
         <Route path="/post/:id" element={<PostPage posts={posts} />} />
-        {/* <Route path="/caribbean" element={<Caribbean postsCategory1={postsCategory1} />} /> */}
-        {/* <Route path="/mediterranean" element={<Mediterranean />} />
-        <Route path="/Veggie" element={<Veggie />} /> */}
       </Routes>
 
       <Footer />
