@@ -9,7 +9,6 @@ import Post from './Post';
 
 // }
 
-
 //   setting the type of posts to an 'AppProps' array
 const Feed: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
     if (!posts) {

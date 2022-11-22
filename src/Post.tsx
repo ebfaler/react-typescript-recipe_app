@@ -20,7 +20,7 @@ const Post: React.FC<{ post: AppProps | undefined }> = ({ post }) => {
 
                 {/* if the post is more than 25 characters, only show the first 25 characters and an ellipsis(...) */}
 
-                <p dangerouslySetInnerHTML={{
+                <p className='post-summary' dangerouslySetInnerHTML={{
 
                     __html: (post.summary).length <= 100
                         ? post.summary

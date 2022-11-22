@@ -32,8 +32,6 @@
    flex-wrap: nowrap;
    text-align: center;
 
-
-
  }
 
  .header-title {
@@ -50,10 +48,21 @@
 
  /* Feed */
 
+ #search {
+   border-radius: 5%;
+   -webkit-border-radius: 5%;
+   -moz-border-radius: 5%;
+   -ms-border-radius: 5%;
+   -o-border-radius: 5%;
+   margin: 7px;
+   text-align: center;
+ }
 
  .searchForm {
    text-align: center;
-   margin-bottom: 25px;
+   font-size: 16px;
+   margin: 30px;
+   color: grey;
  }
 
  .feed-header {
@@ -63,13 +72,18 @@
    margin-bottom: 25px;
  }
 
- .posts {
+ .posts,
+ .post {
    margin-bottom: 20px;
    display: flexbox;
    flex-direction: column;
    flex-wrap: nowrap;
    text-align: center;
 
+ }
+
+ .posts-summary {
+   width: 15 rem;
  }
 
  .posts a {
@@ -80,10 +94,30 @@
    color: black;
  }
 
- .posts img {
+ .posts a:hover {
+   color: grey;
+ }
+
+ .posts img,
+ .postImage {
    height: auto;
    width: 15rem;
    text-align: center;
    padding: 10 px;
 
+ }
+
+ .postTitle {
+   margin: 12px;
+   font-size: 20px;
+ }
+
+ .postInstructions {
+   text-align: left;
+   margin: 20px;
+ }
+
+ .healthDiv {
+   margin: 12px;
+   font-size: 15px;
  }
