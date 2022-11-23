@@ -34,12 +34,26 @@ const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
             return value.replace("false", "No")
         } else {
 
-            return value.replace("true", "yes")
+            return value.replace("true", "Yes")
         }
     }
 
     console.log("testing:" + replaceString("false"))
 
+    //will create a function to add spacing after every full stop in the instructions
+
+    // const myString: string = post.instructions
+    // const stringWithNewLines = myString.replace('.', '.\n'); 
+
+    function replaceString2(values: string): string | undefined {
+        //function currently stops as soon as it's added 1 line break, will explore regex
+        if (values.includes(".")) {
+            return values.replace(".", ".\n")
+        } else {
+            return;
+        }
+    }
+    console.log(replaceString2("My name is Efuah. I come from the UK. I speak English and German"));
 
     return (
 
@@ -55,7 +69,6 @@ const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
                     <p className="postVegan">Vegan:{replaceString(post.vegan.toString())}</p>
                     <p className="postVegetarian">Vegetarian:{replaceString(post.vegetarian.toString())}</p>
                     <p className="postHealthy">Very Healthy: {replaceString(post.veryHealthy.toString())}</p>
-                    <p className="postPopular">Very Popular:{replaceString(post.veryPopular.toString())}</p>
                 </div>
             </article>
         </main>

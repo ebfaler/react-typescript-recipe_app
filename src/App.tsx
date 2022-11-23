@@ -42,6 +42,7 @@ function App() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        //by default axios converts js to json
         const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=24`)
         setPosts(response.data.recipes);
       } catch (err) {
