@@ -23,20 +23,6 @@ function App() {
   // and setting useState to an array of type AppProps 
   const [posts, setPosts] = useState<AppProps[] | undefined>();
 
-  //USING AXIOS TO GET DATA FOR HOME PAGE
-  // useEffect(
-  //   () => {
-
-  //     // Use [] as second argument in useEffect for not rendering each time
-  //     axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=8`)
-  //       .then((response) => {
-  //         console.log(response.data.recipes);
-  //         setPosts(response.data.recipes);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }, []);
 
   // Fetch our data to display all the posts at load time ([] sets useEffect at load time)
   useEffect(() => {
