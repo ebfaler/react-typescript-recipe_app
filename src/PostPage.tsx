@@ -38,22 +38,13 @@ const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
         }
     }
 
-    console.log("testing:" + replaceString("false"))
+    //function to add spacing after every full stop in the instructions
 
-    //will create a function to add spacing after every full stop in the instructions
-
-    // const myString: string = post.instructions
-    // const stringWithNewLines = myString.replace('.', '.\n'); 
-
-    function replaceString2(values: string): string | undefined {
+    function replaceString2(values: string): string {
         //function currently stops as soon as it's added 1 line break, will explore regex
-        if (values.includes(".")) {
-            return values.replace(".", ".\n")
-        } else {
-            return;
-        }
+        return values.replaceAll(".", ".<br/><br/>")
+
     }
-    console.log(replaceString2("My name is Efuah. I come from the UK. I speak English and German"));
 
     return (
 
@@ -63,8 +54,8 @@ const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
                 <h2 className="postTitle">{post.title}</h2>
                 <img className="postImage" id='postImage' src={post.image} />
                 <p className="postServings" id='postServings'> Serves: {post.servings}</p>
-                {/* <p className="postIngredients">{post.extendedIngredients}</p> */}
-                <div dangerouslySetInnerHTML={{ __html: (post.instructions) }} className="postInstructions" />
+                {/* using dangerouslySetInnerHTML to remove tags from display */}
+                <div dangerouslySetInnerHTML={{ __html: replaceString2(post.instructions) }} className="postInstructions" />
                 <div className="healthDiv">
                     <p className="postVegan">Vegan:{replaceString(post.vegan.toString())}</p>
                     <p className="postVegetarian">Vegetarian:{replaceString(post.vegetarian.toString())}</p>
