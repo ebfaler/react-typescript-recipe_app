@@ -182,11 +182,17 @@ a:link {
 @media (min-width: 1024px) {
 
   .header-title {
-    font-size: 70px;
-    padding-bottom: 15px;
+    font-size: 100px;
+  }
+
+  .post-title {
+    font-size: 20px;
+    line-height: 1em;
+    padding: 15px;
   }
 
   .posts img {
+    height: auto;
     width: 15rem;
 
   }
