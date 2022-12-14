@@ -14,20 +14,20 @@ const Post: React.FC<{ post: AppProps | undefined }> = ({ post }) => {
     return (
         <div className="posts">
             <Link to={`/post/${post.id}`}>
+                <div>
+                    <h2 className='post-title'>{post.title}</h2>
+                    <img src={post.image} alt="image of food" />
 
-                <h2 className='post-title'>{post.title}</h2>
-                <img src={post.image} alt="image of food" />
+                    {/* if the post is more than 25 characters, only show the first 25 characters and an ellipsis(...) */}
+                    <div className="summary-div">
+                        <p className='post-summary' dangerouslySetInnerHTML={{
 
-                {/* if the post is more than 25 characters, only show the first 25 characters and an ellipsis(...) */}
-
-                <p className='post-summary' dangerouslySetInnerHTML={{
-
-                    __html: (post.summary).length <= 100
-                        ? post.summary
-                        : `${(post.summary).slice(0, 100)}...`
-                }} />
-
-
+                            __html: (post.summary).length <= 100
+                                ? post.summary
+                                : `${(post.summary).slice(0, 100)}...`
+                        }} />
+                    </div>
+                </div>
             </Link>
 
         </div>

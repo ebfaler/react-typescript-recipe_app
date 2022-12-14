@@ -3,7 +3,7 @@ import React from 'react'
 
 interface Props {
     search: string;
-    //I hovered over setSearch in App.js to find the type
+    //hovered over setSearch in App.js to find the type
     setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -13,7 +13,7 @@ const Search = ({ search, setSearch }: Props) => {
     console.log(search);
     return (
         <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
-            <label htmlFor='search'> Search</label>
+            <label className="search_label" htmlFor='search'> Search</label>
 
             <input
                 id='search'

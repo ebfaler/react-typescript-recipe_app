@@ -59,6 +59,10 @@ a:link {
 
 /* Feed */
 
+.search_label {
+  padding-right: 6px;
+}
+
 #search {
   border-radius: 5%;
   -webkit-border-radius: 5%;
@@ -98,7 +102,7 @@ a:link {
 
 }
 
-.posts-summary {
+.post-summary {
   width: 15 rem;
 }
 
@@ -151,11 +155,47 @@ a:link {
 }
 
 
+
 /*MEDIA QUERIES TABLET --------------------------*/
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
 
+  .search_label {
+    padding-right: 10px;
+  }
 
+  .posts img,
+  .postImage {
+    height: auto;
+    width: 22rem;
+    text-align: center;
+    padding: 10 px;
 
+  }
+
+  .post-summary {
+    padding: 10px;
+  }
+
+}
 
 /*MEDIA QUERIES DESKTOP --------------------------*/
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+
+  .header-title {
+    font-size: 70px;
+    padding-bottom: 15px;
+  }
+
+  .posts img {
+    width: 15rem;
+
+  }
+
+  .feed-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    text-align: center;
+  }
+
+}
