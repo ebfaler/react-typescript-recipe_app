@@ -8,10 +8,14 @@ import Feed from './Feed';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import AppProps from './AppProps';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 
 function App() {
+
+  //returns the location object from the current URL. I wil use to only display the Header and Search on the homepage
+  const location = useLocation();
+
 
   //setting the search string to an inital value of empty
   const [search, setSearch] = useState<string>('');
@@ -29,7 +33,7 @@ function App() {
     const fetchPosts = async () => {
       try {
         //by default axios converts js to json
-        const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=24`)
+        const response = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=32`)
         setPosts(response.data.recipes);
       } catch (err) {
         // Not in the 200 response range 
@@ -54,12 +58,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Search
+
+      {location.pathname == "/" && <Header />}
+      {location.pathname == "/" && <Search
         search={search}
         setSearch={setSearch}
-      />
-
+      />}
       <Routes>
         <Route path="/" element={<Feed posts={searchResults} />} />
         <Route path="/post/:id" element={<PostPage posts={posts} />} />

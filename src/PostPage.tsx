@@ -7,7 +7,7 @@ import { useParams, Link } from "react-router-dom";
 
 const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
 
-    //i named the parameter id in App.js
+    //i had named the parameter id in App.js
     const { id } = useParams();
 
     if (!posts) {
@@ -20,8 +20,6 @@ const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
         </>
     }
     //display the individual specific post (where the id from useParams matches the post id)
-
-
     const post = posts.find(post => (post.id).toString() === id);
     if (!post) {
         return <h2>Post not found!</h2>
@@ -51,6 +49,7 @@ const PostPage: React.FC<{ posts: AppProps[] | undefined }> = ({ posts }) => {
         <main className="PostPage">
             <article className="post">
 
+                <Link to='/' className="goBack"> <i className="arrow left"></i>Back to home page</Link>
                 <h2 className="postTitle">{post.title}</h2>
                 <img className="postImage" id='postImage' src={post.image} />
                 <p className="postServings" id='postServings'> Serves: {post.servings}</p>
